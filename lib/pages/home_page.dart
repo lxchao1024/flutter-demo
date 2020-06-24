@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutterapp1/dao/home_dao.dart';
+import 'package:flutterapp1/model/common_model.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
-
+//https://www.devio.org/io/flutter_app/json/home_page.json
 class HomePage extends StatefulWidget {
   @override
   createState() => HomePageState();
@@ -16,6 +18,8 @@ class HomePageState extends State<HomePage> {
   ];
 
   double appBarAlpha = 0;
+  String result = '正在请求数据中';
+  List<CommonModel> bannerList = [];
 
   _onScroll(double offset) {
     double alpha = offset / APPBAR_SCROLL_OFFSET;
@@ -28,6 +32,20 @@ class HomePageState extends State<HomePage> {
       appBarAlpha = alpha;
     });
     print(alpha);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print('initState ---- HomePage');
+    HomeDao().fetch(null).then((value) {
+      print(value.config.searchUrl);
+      print(value.bannerList.length);
+      setState(() {
+        result = value.config.searchUrl;
+        bannerList = value.bannerList;
+      });
+    });
   }
 
   @override
@@ -51,7 +69,7 @@ class HomePageState extends State<HomePage> {
                       Container(
                         height: 160.0,
                         child: new Swiper(
-                          itemCount: 3,
+                          itemCount: bannerList.length,
                           itemBuilder: _swiperItem,
                           pagination: SwiperPagination(
                             builder: DotSwiperPaginationBuilder(
@@ -63,7 +81,8 @@ class HomePageState extends State<HomePage> {
                       ),
                       Container(
                         height: 1200,
-                        decoration: BoxDecoration(color: Colors.orange),
+                        decoration: BoxDecoration(color: Colors.white),
+                        child: new Text(result),
                       )
                     ],
                   ))),
@@ -71,11 +90,11 @@ class HomePageState extends State<HomePage> {
             opacity: appBarAlpha,
             child: Container(
               height: 80,
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(color: Colors.blue),
               child: Center(
                 child: Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: new Text('首页'),
+                  child: new Text('首页', style: TextStyle(color: Colors.white, fontSize: 18.0)),
                 ),
               ),
             ),
@@ -86,36 +105,6 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget _swiperItem(BuildContext context, int index) {
-    return new Image.network(urls[index], fit: BoxFit.fill);
+    return new Image.network(bannerList[index].icon, fit: BoxFit.fill);
   }
-
-//  Widget getLayout() {
-//    return new Scaffold(
-//      body: Stack(
-//        children: <Widget>[
-//          new MediaQuery.removePadding(
-//              context: context,
-//              removeTop: true,
-//              child: new ListView(
-//                children: <Widget>[
-//                  Container(
-//                    height: 160.0,
-//                    child: new Swiper(
-//                      itemBuilder: _swiperItem,
-//                      itemCount: 3,
-//                      autoplay: true,
-//                      pagination: new SwiperPagination(),
-//                      //control: new SwiperControl(),
-//                    ),
-//                  ),
-//                  Container(
-//                    height: 800,
-//                    child: new Text('data'),
-//                  )
-//                ],
-//              ))
-//        ],
-//      ),
-//    );
-//  }
 }

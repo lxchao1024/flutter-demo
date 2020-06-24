@@ -17,5 +17,5 @@ class Api {
   // 生活指数
   static String WEATHER_LIFESTYLE_URL = "${BASE_URL}/lifestyle?location=beijing&key=${API_WEB_KEY}";
 
-
+  static String HOME_URL = 'https://www.devio.org/io/flutter_app/json/home_page.json';
 }
