@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutterapp1/dao/home_dao.dart';
 import 'package:flutterapp1/model/common_model.dart';
+import 'package:flutterapp1/widget/grid_nav.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
 //https://www.devio.org/io/flutter_app/json/home_page.json
@@ -79,6 +80,8 @@ class HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
+                      GridNav(),
+                      Divider(),
                       Container(
                         height: 1200,
                         decoration: BoxDecoration(color: Colors.white),
