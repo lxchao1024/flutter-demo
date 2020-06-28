@@ -39,9 +39,10 @@ class HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     print('initState ---- HomePage');
-    HomeDao().fetch(null).then((value) {
+    HomeDao().fetch().then((value) {
       print(value.config.searchUrl);
       print(value.bannerList.length);
+      print(value.sealsBox);
       setState(() {
         result = value.config.searchUrl;
         bannerList = value.bannerList;

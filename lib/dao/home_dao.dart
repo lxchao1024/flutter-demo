@@ -3,7 +3,7 @@ import 'package:flutterapp1/common/api.dart';
 import 'package:flutterapp1/model/home_model.dart';
 
 class HomeDao {
-  Future<HomeModel> fetch(params) async {
+  Future<HomeModel> fetch() async {
     final Response response = await Dio().get(Api.HOME_URL);
     print('print ${response.data}');
     print(response.data);
