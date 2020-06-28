@@ -11,17 +11,26 @@ class HomeModel {
   final GridNavModel gridNav;
   final SealsBoxModel sealsBox;
 
-  HomeModel({this.config, this.bannerList, this.localNavList, this.subNavList, this.gridNav, this.sealsBox});
+  HomeModel(
+      {this.config,
+      this.bannerList,
+      this.localNavList,
+      this.subNavList,
+      this.gridNav,
+      this.sealsBox});
 
   factory HomeModel.fromJson(Map<String, dynamic> json) {
     var bannerListJson = json['bannerList'] as List;
-    List<CommonModel> bannerList = bannerListJson.map((i) => CommonModel.fromJson(i)).toList();
+    List<CommonModel> bannerList =
+        bannerListJson.map((i) => CommonModel.fromJson(i)).toList();
 
     var localNavListJson = json['localNavList'] as List;
-    List<CommonModel> localNavList = localNavListJson.map((i) => CommonModel.fromJson(i)).toList();
+    List<CommonModel> localNavList =
+        localNavListJson.map((i) => CommonModel.fromJson(i)).toList();
 
     var subNavListJson = json['subNavList'] as List;
-    List<CommonModel> subNavList = subNavListJson.map((i) => CommonModel.fromJson(i)).toList();
+    List<CommonModel> subNavList =
+        subNavListJson.map((i) => CommonModel.fromJson(i)).toList();
 
     return HomeModel(
       config: ConfigModel.fromJson(json['config']),
@@ -29,7 +38,7 @@ class HomeModel {
       localNavList: localNavList,
       subNavList: subNavList,
       gridNav: GridNavModel.fromJson(json['gridNav']),
-      sealsBox: SealsBoxModel.fromJson(json['sealsBox']),
+      sealsBox: SealsBoxModel.fromJson(json['salesBox']),
     );
   }
 }
