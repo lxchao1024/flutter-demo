@@ -3,6 +3,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutterapp1/dao/home_dao.dart';
 import 'package:flutterapp1/model/common_model.dart';
 import 'package:flutterapp1/widget/grid_nav.dart';
+import 'package:flutterapp1/widget/local_nav.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
 //https://www.devio.org/io/flutter_app/json/home_page.json
@@ -21,6 +22,7 @@ class HomePageState extends State<HomePage> {
   double appBarAlpha = 0;
   String result = '正在请求数据中';
   List<CommonModel> bannerList = [];
+  List<CommonModel> localNavList = [];
 
   _onScroll(double offset) {
     double alpha = offset / APPBAR_SCROLL_OFFSET;
@@ -46,6 +48,7 @@ class HomePageState extends State<HomePage> {
       setState(() {
         result = value.config.searchUrl;
         bannerList = value.bannerList;
+        localNavList = value.localNavList;
       });
     });
   }
@@ -53,6 +56,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff2f2f2),
       body: new Stack(
         children: <Widget>[
           MediaQuery.removePadding(
@@ -81,13 +85,7 @@ class HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      GridNav(),
-                      Divider(),
-                      Container(
-                        height: 1200,
-                        decoration: BoxDecoration(color: Colors.white),
-                        child: new Text(result),
-                      )
+                      LocalNav(localNavList: localNavList)
                     ],
                   ))),
           Opacity(

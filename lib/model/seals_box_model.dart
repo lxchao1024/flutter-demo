@@ -1,6 +1,6 @@
 import 'package:flutterapp1/model/common_model.dart';
 
-class SealsBoxModel {
+class SalesBoxModel {
   final String icon;
   final String moreUrl;
   final CommonModel bigCard1;
@@ -11,7 +11,7 @@ class SealsBoxModel {
   final CommonModel smallCard4;
 
   //大括号的作用是参数可以为空
-  SealsBoxModel(
+  SalesBoxModel(
       {this.icon,
       this.moreUrl,
       this.bigCard1,
@@ -21,8 +21,8 @@ class SealsBoxModel {
       this.smallCard3,
       this.smallCard4});
 
-  factory SealsBoxModel.fromJson(Map<String, dynamic> json) {
-    return SealsBoxModel(
+  factory SalesBoxModel.fromJson(Map<String, dynamic> json) {
+    return SalesBoxModel(
         icon: json['icon'],
         moreUrl: json['title'],
         bigCard1: CommonModel.fromJson(json['bigCard1']),

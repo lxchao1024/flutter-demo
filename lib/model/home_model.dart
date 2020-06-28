@@ -9,7 +9,7 @@ class HomeModel {
   final List<CommonModel> localNavList;
   final List<CommonModel> subNavList;
   final GridNavModel gridNav;
-  final SealsBoxModel sealsBox;
+  final SalesBoxModel sealsBox;
 
   HomeModel(
       {this.config,
@@ -38,7 +38,7 @@ class HomeModel {
       localNavList: localNavList,
       subNavList: subNavList,
       gridNav: GridNavModel.fromJson(json['gridNav']),
-      sealsBox: SealsBoxModel.fromJson(json['salesBox']),
+      sealsBox: SalesBoxModel.fromJson(json['salesBox']),
     );
   }
 }
