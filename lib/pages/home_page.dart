@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutterapp1/dao/home_dao.dart';
 import 'package:flutterapp1/model/common_model.dart';
+import 'package:flutterapp1/model/grid_nav_model.dart';
 import 'package:flutterapp1/widget/grid_nav.dart';
 import 'package:flutterapp1/widget/local_nav.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
+
 //https://www.devio.org/io/flutter_app/json/home_page.json
 class HomePage extends StatefulWidget {
   @override
@@ -23,6 +26,7 @@ class HomePageState extends State<HomePage> {
   String result = '正在请求数据中';
   List<CommonModel> bannerList = [];
   List<CommonModel> localNavList = [];
+  GridNavModel gridNav = null;
 
   _onScroll(double offset) {
     double alpha = offset / APPBAR_SCROLL_OFFSET;
@@ -44,11 +48,14 @@ class HomePageState extends State<HomePage> {
       print(value.config.searchUrl);
       print(value.bannerList.length);
       print(value.sealsBox);
-      setState(() {
-        result = value.config.searchUrl;
-        bannerList = value.bannerList;
-        localNavList = value.localNavList;
-      });
+      if (bannerList.length == 0) {
+        setState(() {
+          result = value.config.searchUrl;
+          bannerList = value.bannerList;
+          localNavList = value.localNavList;
+          gridNav = value.gridNav;
+        });
+      }
     });
   }
 
@@ -77,14 +84,17 @@ class HomePageState extends State<HomePage> {
                           itemCount: bannerList.length,
                           itemBuilder: _swiperItem,
                           pagination: SwiperPagination(
-                            builder: DotSwiperPaginationBuilder(
-                              color: Colors.deepOrange,
-                              activeColor: Colors.red
-                            )
-                          ),
+                              builder: DotSwiperPaginationBuilder(
+                                  color: Colors.deepOrange,
+                                  activeColor: Colors.red)),
                         ),
                       ),
-                      LocalNav(localNavList: localNavList)
+                      Padding(
+                          padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
+                          child: LocalNav(localNavList: localNavList)),
+                      Padding(
+                          padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+                          child: GridNav(gridNavModel: gridNav))
                     ],
                   ))),
           Opacity(
@@ -95,7 +105,8 @@ class HomePageState extends State<HomePage> {
               child: Center(
                 child: Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: new Text('首页', style: TextStyle(color: Colors.white, fontSize: 18.0)),
+                  child: new Text('首页',
+                      style: TextStyle(color: Colors.white, fontSize: 18.0)),
                 ),
               ),
             ),

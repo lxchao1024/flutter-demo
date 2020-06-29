@@ -65,22 +65,32 @@ class _MyWebViewState extends State<MyWebView> {
   }
 
   Widget _appBar(BuildContext context) {
-    if (widget.hideAppBar ?? false)
-      return Container(
-        height: 30,
-        decoration: BoxDecoration(color: _color(widget.statusBarColor)),
-      );
+    //动态配置状态栏
+//    if (widget.hideAppBar ?? false)
+//      return Container(
+//        height: 30,
+//        decoration: BoxDecoration(color: _color(widget.statusBarColor)),
+//      );
+    Color color = Color(0xfff2f2fe2);
+    if (widget.statusBarColor != null) {
+      color = Color(int.parse('0xff' + widget.statusBarColor));
+    }
     return Container(
+      color: color,
+      padding: EdgeInsets.fromLTRB(0, 38, 0, 10),
       child: FractionallySizedBox(
         widthFactor: 1,
         child: Stack(
           children: <Widget>[
             GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
               child: Container(
                 margin: EdgeInsets.only(left: 10),
                 child: Icon(
                   Icons.close,
-                  color: Colors.blue,
+                  color: Colors.white,
                   size: 26,
                 ),
               ),
@@ -89,7 +99,7 @@ class _MyWebViewState extends State<MyWebView> {
               left: 0,
               right: 0,
               child: Center(
-                child: Text(widget.title),
+                child: Text(widget.title, style: TextStyle(color: Colors.white, fontSize: 18),),
               ),
             )
           ],
