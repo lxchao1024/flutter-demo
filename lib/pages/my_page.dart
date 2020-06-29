@@ -35,7 +35,7 @@ class MyPageState extends State<MyPage> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(25),
                               child: FadeInImage.assetNetwork(
-                                placeholder: "images/ic_device_image_default.png",
+                                placeholder: "assets/images/icon_default_avatar.png",
                                 image: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1303636189,2885099528&fm=26&gp=0.jpg',
                                 fit: BoxFit.cover,
                               ),
