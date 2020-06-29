@@ -40,7 +40,6 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    print('initState ---- HomePage');
     HomeDao().fetch().then((value) {
       print(value.config.searchUrl);
       print(value.bannerList.length);
