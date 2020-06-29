@@ -6,6 +6,7 @@ import 'package:flutterapp1/model/common_model.dart';
 import 'package:flutterapp1/model/grid_nav_model.dart';
 import 'package:flutterapp1/widget/grid_nav.dart';
 import 'package:flutterapp1/widget/local_nav.dart';
+import 'package:flutterapp1/widget/sub_nav.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
 
@@ -15,7 +16,7 @@ class HomePage extends StatefulWidget {
   createState() => HomePageState();
 }
 
-class HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
   List<String> urls = [
     'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1303636189,2885099528&fm=26&gp=0.jpg',
     'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592891076717&di=8e347aed99fdd1346e2f7e7abf25e11e&imgtype=0&src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-bc0c14278ec0e2c604f9307a5323815b_1200x500.jpg',
@@ -26,7 +27,8 @@ class HomePageState extends State<HomePage> {
   String result = '正在请求数据中';
   List<CommonModel> bannerList = [];
   List<CommonModel> localNavList = [];
-  GridNavModel gridNav = null;
+  List<CommonModel> subNavList = [];
+  GridNavModel gridNav;
 
   _onScroll(double offset) {
     double alpha = offset / APPBAR_SCROLL_OFFSET;
@@ -44,19 +46,20 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    HomeDao().fetch().then((value) {
-      print(value.config.searchUrl);
-      print(value.bannerList.length);
-      print(value.sealsBox);
-      if (bannerList.length == 0) {
+    if (bannerList.length == 0) {
+      HomeDao().fetch().then((value) {
+        print(value.config.searchUrl);
+        print(value.bannerList.length);
+        print(value.sealsBox);
         setState(() {
           result = value.config.searchUrl;
           bannerList = value.bannerList;
           localNavList = value.localNavList;
+          subNavList = value.subNavList;
           gridNav = value.gridNav;
         });
-      }
-    });
+      });
+    }
   }
 
   @override
@@ -70,6 +73,7 @@ class HomePageState extends State<HomePage> {
               // 去除状态栏的padding
               removeTop: true,
               child: new NotificationListener(
+                  // ignore: missing_return
                   onNotification: (scrollNotification) {
                     if (scrollNotification is ScrollUpdateNotification &&
                         scrollNotification.depth == 0) {
@@ -83,6 +87,7 @@ class HomePageState extends State<HomePage> {
                         child: new Swiper(
                           itemCount: bannerList.length,
                           itemBuilder: _swiperItem,
+                          autoplay: true,
                           pagination: SwiperPagination(
                               builder: DotSwiperPaginationBuilder(
                                   color: Colors.deepOrange,
@@ -94,7 +99,10 @@ class HomePageState extends State<HomePage> {
                           child: LocalNav(localNavList: localNavList)),
                       Padding(
                           padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
-                          child: GridNav(gridNavModel: gridNav))
+                          child: GridNav(gridNavModel: gridNav)),
+                      Padding(
+                          padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+                          child: SubNav(subNavList: subNavList)),
                     ],
                   ))),
           Opacity(
@@ -119,4 +127,7 @@ class HomePageState extends State<HomePage> {
   Widget _swiperItem(BuildContext context, int index) {
     return new Image.network(bannerList[index].icon, fit: BoxFit.fill);
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
