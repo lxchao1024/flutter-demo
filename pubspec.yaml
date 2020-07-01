@@ -36,6 +36,7 @@ dependencies:
   flutter_swiper : ^1.1.6
   webview_flutter: ^0.3.22+1
   image_picker: ^0.6.7+2
+  fluttertoast: ^4.0.0
 
   provider: ^4.0.2
   fluro: ^1.5.1
@@ -82,6 +83,7 @@ flutter:
     - assets/images/icon_yin.png
     - assets/images/icon_sunny.png
     - assets/images/icon_snoy.png
+    - assets/images/splash.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp1/navigator/tab_navigator.dart';
+import 'package:flutterapp1/pages/splash_page.dart';
 
 void main() {
   runApp(new MyApp());
@@ -18,7 +19,7 @@ class MyAppState extends State<MyApp> {
       //是否显示Debug标签
       debugShowCheckedModeBanner: true,
       theme: new ThemeData(primaryColor: Colors.blue),
-      home: TabNavigator(),
+      home: SplashPage(),
     );
   }
 }

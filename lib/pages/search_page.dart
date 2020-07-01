@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterapp1/pages/image_picker_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -76,15 +77,17 @@ class SearchPageState extends State<SearchPage> {
           ),
           RaisedButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) {
-                  return ImagePickerPage();
-                }
-              ));
+              Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                return ImagePickerPage();
+              }));
             },
             child: Text('测试图库'),
           ),
 //          Image.file(_imageFiles.then((value) => null)),
+          RaisedButton(
+            onPressed: showToast,
+            child: Text('吐司'),
+          )
         ],
       ),
     );
@@ -97,7 +100,7 @@ class SearchPageState extends State<SearchPage> {
       decoration: InputDecoration(
           contentPadding: EdgeInsets.all(5),
           border:
-          OutlineInputBorder(borderRadius: BorderRadius.circular(15.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(15.0))),
       inputFormatters: <TextInputFormatter>[
         WhitelistingTextInputFormatter.digitsOnly,
         LengthLimitingTextInputFormatter(20)
@@ -137,6 +140,25 @@ class SearchPageState extends State<SearchPage> {
           print('Value : $v');
         });
       },
+    );
+  }
+
+  void showToast() {
+    Fluttertoast.showToast(
+      //吐司显示文字
+        msg: 'Hello Toast',
+        //小吐司
+      toastLength: Toast.LENGTH_SHORT,
+        //大吐司
+//        toastLength: Toast.LENGTH_LONG,
+        webBgColor: "#e74c3c",
+        timeInSecForIosWeb: 5,
+        //吐司背景颜色
+        backgroundColor: Colors.red,
+        //吐司字体颜色
+        textColor: Colors.white,
+      //吐司的位置
+      gravity: ToastGravity.CENTER,
     );
   }
 }
