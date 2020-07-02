@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp1/pages/app/login_page.dart';
 import 'package:flutterapp1/widget/my/notification_view.dart';
 import 'package:flutterapp1/widget/my/setting_item_view.dart';
 import 'package:flutterapp1/widget/my/suffix_view.dart';
@@ -46,9 +47,16 @@ class MyPageState extends State<MyPage> {
                               ),
                             ),
                           )),
-                          Text('登录',
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white))
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (_){
+                                return LoginPage();
+                              }));
+                            },
+                            child: Text('登录',
+                                style:
+                                TextStyle(fontSize: 16, color: Colors.white)),
+                          )
                         ],
                       ),
                     ),
