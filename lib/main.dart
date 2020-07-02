@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp1/navigator/tab_navigator.dart';
 import 'package:flutterapp1/pages/splash_page.dart';
 
+///程序入口
 void main() {
   runApp(new MyApp());
 }

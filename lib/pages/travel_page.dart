@@ -3,6 +3,7 @@ import 'package:flutterapp1/components/weather/WeatherInfoItem.dart';
 import 'package:flutterapp1/model/weather_model.dart';
 import 'package:provider/provider.dart';
 
+///天气
 class TravelPage extends StatefulWidget {
   @override
   createState() => TravelPageState();

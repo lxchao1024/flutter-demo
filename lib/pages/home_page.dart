@@ -11,6 +11,8 @@ import 'package:flutterapp1/widget/sub_nav.dart';
 const APPBAR_SCROLL_OFFSET = 100;
 
 //https://www.devio.org/io/flutter_app/json/home_page.json
+
+///首页
 class HomePage extends StatefulWidget {
   @override
   createState() => HomePageState();

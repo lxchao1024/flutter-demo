@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+///消息个数提醒
 class NotificationView extends StatelessWidget {
 
   final String text;

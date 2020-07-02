@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp1/widget/my_web_view.dart';
 
+///登录页面
 class LoginPage extends StatefulWidget {
   @override
   createState() => _LoginPageState();
@@ -12,7 +13,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login'), centerTitle: true),
+      ///去掉返回按钮automaticallyImplyLeading: false,
+      appBar: AppBar(title: Text('登录'), centerTitle: true, ),
       body: Column(
         children: <Widget>[
           Center(
@@ -61,7 +63,16 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       text: '《服务协议》',
                       style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold))
+                          color: Colors.blue, fontWeight: FontWeight.bold)),
+                  TextSpan(
+                    text: '《隐私政策》',
+                    style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                    recognizer: TapGestureRecognizer()..onTap = () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                        return MyWebView(title: '隐私政策', url: 'https://www.baidu.com');
+                      }));
+                    }
+                  )
                 ]),
           ),
           Text(''),
@@ -71,69 +82,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-//@override
-//Widget build(BuildContext context) {
-//  return Scaffold(
-//    appBar: AppBar(title: Text('Login'), centerTitle: true),
-//    body: MediaQuery.removePadding(
-//        context: context,
-//        removeTop: true,
-//        child: Column(
-//          mainAxisAlignment: MainAxisAlignment.center,
-//          crossAxisAlignment: CrossAxisAlignment.center,
-//          children: <Widget>[
-//            Padding(
-//              padding: EdgeInsets.only(top: 150),
-//              child: Image.asset('assets/images/icon_videodetail_name.png'),
-//            ),
-//            RawChip(
-//              avatar: CircleAvatar(
-//                child: Icon(Icons.phone_iphone),
-//              ),
-//              label: Text('Login'),
-//            ),
-//            Container(
-//              height: 45,
-//              margin: EdgeInsets.all(10),
-//              decoration: BoxDecoration(
-//                  color: Color(int.parse('0xffF03D38')),
-//                  borderRadius: BorderRadius.circular(45)),
-////                  child: Row(
-////                    mainAxisAlignment: MainAxisAlignment.center,
-////                    children: <Widget>[
-////                      Icon(Icons.phone_iphone, color: Colors.white, size: 18,),
-////                      Text('登录', style: TextStyle(color: Colors.white, fontSize: 16),)
-////                    ],
-////                  ),
-//              child: RawChip(
-//                backgroundColor: Color(int.parse('0xffF03D38')),
-//                avatar: CircleAvatar(
-//                  backgroundColor: Color(int.parse('0xffF03D38')),
-//                  child: Icon(
-//                    Icons.phone_iphone,
-//                    color: Colors.white,
-//                    size: 18,
-//                  ),
-//                ),
-//                label: Text(
-//                  '登录',
-//                  style: TextStyle(color: Colors.white, fontSize: 16),
-//                ),
-//              ),
-//            ),
-//            RichText(
-//              text: TextSpan(
-//                  style: TextStyle(color: Color(0xFF999999)),
-//                  children: <InlineSpan>[
-//                    TextSpan(text: '登陆即视为同意'),
-//                    TextSpan(
-//                        text: '《服务协议》',
-//                        style: TextStyle(
-//                            color: Colors.blue, fontWeight: FontWeight.bold))
-//                  ]),
-//            )
-//          ],
-//        )),
-//  );
-//}

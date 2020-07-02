@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutterapp1/pages/image_picker_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+///搜索
 class SearchPage extends StatefulWidget {
   @override
   createState() => SearchPageState();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+///文本+右箭头
 class SuffixView extends StatelessWidget {
 
   final String text;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+///个人中心单条显示
 class SettingItem extends StatelessWidget {
 
   final IconData iconData;
