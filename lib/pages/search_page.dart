@@ -27,6 +27,7 @@ class SearchPageState extends State<SearchPage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           leading: IconButton(
             icon: Icon(Icons.video_call, color: widget.show == true ? Colors.white : Colors.blue,),
             onPressed: () {
@@ -59,8 +60,26 @@ class SearchPageState extends State<SearchPage> {
         ),
         body: TabBarView(
           children: <Widget>[
-            Center(
-                child: Text("这是直播的内容")
+            Column(
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(45)),
+                  padding: EdgeInsets.only(left: 15, right: 15),
+                  height: 30,
+                  margin: EdgeInsets.all(15),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.search, color: Colors.white),
+                      Text('试试输点什么内容吧~', style: TextStyle(color: Colors.white),)
+                    ],
+                  ),
+                ),
+                Spacer(),
+                Center(
+                  child: Text('这是直播中的内容'),
+                ),
+                Spacer()
+              ],
             ),
             Center(
                 child: Text("这是关注的内容${index++}")

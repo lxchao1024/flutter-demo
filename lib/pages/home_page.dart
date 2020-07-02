@@ -66,6 +66,15 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
 
   @override
   Widget build(BuildContext context) {
+    if (bannerList.length == 0) {
+      return Scaffold(
+        body: Center(
+          child: CupertinoActivityIndicator(
+            radius: 18,
+          ),
+        ),
+      );
+    }
     return Scaffold(
       backgroundColor: Color(0xfff2f2f2),
       body: new Stack(
