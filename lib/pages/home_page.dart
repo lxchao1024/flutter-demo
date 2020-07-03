@@ -4,8 +4,10 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutterapp1/dao/home_dao.dart';
 import 'package:flutterapp1/model/common_model.dart';
 import 'package:flutterapp1/model/grid_nav_model.dart';
+import 'package:flutterapp1/model/sales_box_model.dart';
 import 'package:flutterapp1/widget/grid_nav.dart';
 import 'package:flutterapp1/widget/local_nav.dart';
+import 'package:flutterapp1/widget/sales_box.dart';
 import 'package:flutterapp1/widget/sub_nav.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
@@ -31,6 +33,7 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
   List<CommonModel> localNavList = [];
   List<CommonModel> subNavList = [];
   GridNavModel gridNav;
+  SalesBoxModel salesBox;
 
   _onScroll(double offset) {
     double alpha = offset / APPBAR_SCROLL_OFFSET;
@@ -52,13 +55,14 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
       HomeDao().fetch().then((value) {
         print(value.config.searchUrl);
         print(value.bannerList.length);
-        print(value.sealsBox);
+        print(value.salesBox);
         setState(() {
           result = value.config.searchUrl;
           bannerList = value.bannerList;
           localNavList = value.localNavList;
           subNavList = value.subNavList;
           gridNav = value.gridNav;
+          salesBox = value.salesBox;
         });
       });
     }
@@ -114,6 +118,11 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                       Padding(
                           padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
                           child: SubNav(subNavList: subNavList)),
+
+                      Padding(
+                          padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+                          child: SalesBox(salesBox: salesBox,)),
+
                     ],
                   ))),
           Opacity(

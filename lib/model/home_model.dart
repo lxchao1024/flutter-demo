@@ -1,7 +1,7 @@
 import 'package:flutterapp1/model/common_model.dart';
 import 'package:flutterapp1/model/config_model.dart';
 import 'package:flutterapp1/model/grid_nav_model.dart';
-import 'package:flutterapp1/model/seals_box_model.dart';
+import 'package:flutterapp1/model/sales_box_model.dart';
 
 class HomeModel {
   final ConfigModel config;
@@ -9,7 +9,7 @@ class HomeModel {
   final List<CommonModel> localNavList;
   final List<CommonModel> subNavList;
   final GridNavModel gridNav;
-  final SalesBoxModel sealsBox;
+  final SalesBoxModel salesBox;
 
   HomeModel(
       {this.config,
@@ -17,7 +17,7 @@ class HomeModel {
       this.localNavList,
       this.subNavList,
       this.gridNav,
-      this.sealsBox});
+      this.salesBox});
 
   factory HomeModel.fromJson(Map<String, dynamic> json) {
     var bannerListJson = json['bannerList'] as List;
@@ -32,13 +32,15 @@ class HomeModel {
     List<CommonModel> subNavList =
         subNavListJson.map((i) => CommonModel.fromJson(i)).toList();
 
+    print('salesBox = ${json['salesBox']}');
+
     return HomeModel(
       config: ConfigModel.fromJson(json['config']),
       bannerList: bannerList,
       localNavList: localNavList,
       subNavList: subNavList,
       gridNav: GridNavModel.fromJson(json['gridNav']),
-      sealsBox: SalesBoxModel.fromJson(json['salesBox']),
+      salesBox: SalesBoxModel.fromJson(json['salesBox']),
     );
   }
 }

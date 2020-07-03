@@ -24,7 +24,7 @@ class SalesBoxModel {
   factory SalesBoxModel.fromJson(Map<String, dynamic> json) {
     return SalesBoxModel(
         icon: json['icon'],
-        moreUrl: json['title'],
+        moreUrl: json['moreUrl'],
         bigCard1: CommonModel.fromJson(json['bigCard1']),
         bigCard2: CommonModel.fromJson(json['bigCard2']),
         smallCard1: CommonModel.fromJson(json['smallCard1']),
