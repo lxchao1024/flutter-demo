@@ -91,19 +91,16 @@ class _LivePageState extends State<LivePage> {
   Widget _buildLoadMore() {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Center(
-        child: Row(
+      child:Row(
+        mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Spacer(),
             CupertinoActivityIndicator(radius: 10),
             Padding(
               padding: EdgeInsets.only(left: 5),
               child: Text('正在加载...'),
-            ),
-            Spacer()
+            )
           ],
         ),
-      ),
     );
   }
 }
