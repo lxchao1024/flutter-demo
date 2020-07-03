@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'file:///E:/andspaces/debug/flutter-app1/flutter_app1/lib/pages/live_page.dart';
 import 'package:flutterapp1/widget/round_indicator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -74,11 +75,10 @@ class SearchPageState extends State<SearchPage> {
                     ],
                   ),
                 ),
-                Spacer(),
-                Center(
-                  child: Text('这是直播中的内容'),
-                ),
-                Spacer()
+                Expanded(
+                  flex: 1,
+                  child: LivePage(),
+                )
               ],
             ),
             Center(
