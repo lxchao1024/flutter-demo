@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterapp1/model/common_model.dart';
 import 'package:flutterapp1/model/grid_nav_model.dart';
-import 'package:flutterapp1/widget/my_web_view.dart';
+import 'package:flutterapp1/utils/jump_util.dart';
 
 ///网格卡片
 class GridNav extends StatelessWidget {
@@ -27,12 +27,6 @@ class GridNav extends StatelessWidget {
   List<Widget> _gridNavItems(BuildContext context) {
     List<Widget> items = [];
     if (gridNavModel == null) return items;
-//    items.add(Container(
-//      height: 140,
-//      decoration: BoxDecoration(color: Colors.blue),
-//      child: Text('hello'),
-//      width: MediaQuery.of(context).size.width,
-//    ));
     if (gridNavModel.hotel != null) {
       items.add(_gridNavItem(context, gridNavModel.hotel, true));
     }
@@ -137,14 +131,7 @@ class GridNav extends StatelessWidget {
   _wrapGesture(BuildContext context, Widget widget, CommonModel model) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return MyWebView(
-              icon: model.icon,
-              title: model.title,
-              statusBarColor: model.statusBarColor,
-              hideAppBar: model.hideAppBar,
-              url: model.url);
-        }));
+        JumpUtil.jumpWebView(context, model);
       },
       child: widget,
     );

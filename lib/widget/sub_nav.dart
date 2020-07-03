@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterapp1/model/common_model.dart';
-import 'package:flutterapp1/widget/my_web_view.dart';
+import 'package:flutterapp1/utils/jump_util.dart';
 
 ///网格卡片
 class SubNav extends StatelessWidget {
@@ -49,24 +49,15 @@ class SubNav extends StatelessWidget {
     return items;
   }
 
-  Widget _wrap(BuildContext context, CommonModel element) {
+  Widget _wrap(BuildContext context, CommonModel model) {
     return Expanded(
       flex: 1,
       child: GestureDetector(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return MyWebView(
-                title: element.title,
-                icon: element.icon,
-                url: element.url,
-                hideAppBar: element.hideAppBar,
-                statusBarColor: element.statusBarColor);
-          }));
-        },
+        onTap: () => JumpUtil.jumpWebView(context, model),
         child: Column(
           children: <Widget>[
-            Image.network(element.icon, width: 22, height: 22),
-            Text(element.title, style: TextStyle(fontSize: 12))
+            Image.network(model.icon, width: 22, height: 22),
+            Text(model.title, style: TextStyle(fontSize: 12))
           ],
         ),
       ),

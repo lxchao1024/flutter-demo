@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterapp1/model/common_model.dart';
-import 'package:flutterapp1/model/grid_nav_model.dart';
-import 'package:flutterapp1/widget/my_web_view.dart';
+import 'package:flutterapp1/utils/jump_util.dart';
 
 //轮播图下的5个icon
 class LocalNav extends StatelessWidget {
@@ -38,19 +37,7 @@ class LocalNav extends StatelessWidget {
 
   Widget _item(BuildContext context, CommonModel model) {
     return GestureDetector(
-      onTap: () {
-        print('localNav == ${model.hideAppBar}');
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (_) {
-            print('title: ${model.title}');
-            print('hideAppBar: ${model.hideAppBar}');
-            print('url: ${model.url}');
-            print('icon: ${model.icon}');
-            print('statusBarColor: ${model.statusBarColor}');
-            return MyWebView(title: model.title, hideAppBar: true, url: model.url, icon: model.icon, statusBarColor: model.statusBarColor);
-          }
-        ));
-      },
+      onTap: () => JumpUtil.jumpWebView(context, model),
       child: Column(
         children: <Widget>[
           Image.network(model.icon, width: 32, height: 32),

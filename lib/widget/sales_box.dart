@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterapp1/model/common_model.dart';
 import 'package:flutterapp1/model/sales_box_model.dart';
-import 'package:flutterapp1/widget/my_web_view.dart';
+import 'package:flutterapp1/utils/jump_util.dart';
 
 ///热门活动
 class SalesBox extends StatelessWidget {
@@ -38,7 +38,7 @@ class SalesBox extends StatelessWidget {
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight)),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () => JumpUtil.jumpWebView(context, CommonModel(title: '更多福利', icon: salesBox.icon, url: salesBox.moreUrl, hideAppBar: true, statusBarColor: '0000ff')),
                     child: Text('获取更多福利 >',
                         style: TextStyle(color: Colors.white, fontSize: 12)),
                   ),
@@ -68,27 +68,16 @@ class SalesBox extends StatelessWidget {
     return Row(
       children: <Widget>[
         GestureDetector(
-          onTap: () => _jumpToDetail(context, leftModel),
+          onTap: () => JumpUtil.jumpWebView(context, leftModel),
           child: Image.network(leftModel.icon,
               width: MediaQuery.of(context).size.width / 2 - 10),
         ),
         GestureDetector(
-          onTap: () => _jumpToDetail(context, rightModel),
+          onTap: () => JumpUtil.jumpWebView(context, rightModel),
           child: Image.network(rightModel.icon,
               width: MediaQuery.of(context).size.width / 2 - 10),
         )
       ],
     );
-  }
-
-  void _jumpToDetail(BuildContext context, CommonModel model) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-      return MyWebView(
-          title: model.title,
-          icon: model.icon,
-          url: model.url,
-          statusBarColor: model.statusBarColor,
-          hideAppBar: model.hideAppBar);
-    }));
   }
 }
