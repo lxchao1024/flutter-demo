@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp1/navigator/tab_navigator.dart';
-import 'package:flutterapp1/pages/official_first_app.dart';
 import 'package:flutterapp1/pages/splash_page.dart';
 
 ///程序入口
 void main() {
-//  runApp(new MyApp());
-  ///official first app code
-  runApp(new OfficialApp());
+  runApp(new MyApp());
 }
 
 class MyApp extends StatefulWidget {
