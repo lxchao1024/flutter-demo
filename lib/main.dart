@@ -17,7 +17,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       //是否显示Debug标签
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       theme: new ThemeData(primaryColor: Colors.blue),
       home: SplashPage(),
     );
