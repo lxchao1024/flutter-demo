@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp1/pages/home_page.dart';
+import 'package:flutterapp1/pages/jf_live_page.dart';
 import 'package:flutterapp1/pages/my_page.dart';
 import 'package:flutterapp1/pages/search_page.dart';
 import 'package:flutterapp1/pages/travel_page.dart';
@@ -12,7 +13,7 @@ class TabNavigator extends StatefulWidget {
 
 class TabNavigatorState extends State<TabNavigator> {
   int _currentIndex = 0;
-  static final List<String> titles = ["首页", "搜索", "天气", "我的"];
+  static final List<String> titles = ["首页", "搜索", "天气", "我的", "直播"];
   final PageController _controller = PageController(initialPage: 0);
 
   final List<BottomNavigationBarItem> items = [
@@ -23,7 +24,9 @@ class TabNavigatorState extends State<TabNavigator> {
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.location), title: Text(titles[2])),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.profile_circled), title: Text(titles[3]))
+        icon: Icon(CupertinoIcons.profile_circled), title: Text(titles[3])),
+    BottomNavigationBarItem(
+        icon: Icon(CupertinoIcons.heart_solid), title: Text(titles[4])),
   ];
 
   @override
@@ -40,7 +43,8 @@ class TabNavigatorState extends State<TabNavigator> {
           HomePage(),
           SearchPage(),
           TravelPage(),
-          MyPage()
+          MyPage(),
+          JfLivePage()
         ],
         onPageChanged: (index) {
           setState(() {
@@ -72,7 +76,8 @@ class TabNavigatorState extends State<TabNavigator> {
                 HomePage(),
                 SearchPage(),
                 TravelPage(),
-                MyPage()
+                MyPage(),
+                JfLivePage()
               ],
               onPageChanged: (index) {
                 setState(() {
