@@ -17,10 +17,10 @@ const APPBAR_SCROLL_OFFSET = 100;
 ///首页
 class HomePage extends StatefulWidget {
   @override
-  createState() => HomePageState();
+  createState() => _HomePageState();
 }
 
-class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
   List<String> urls = [
     'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1303636189,2885099528&fm=26&gp=0.jpg',
     'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592891076717&di=8e347aed99fdd1346e2f7e7abf25e11e&imgtype=0&src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-bc0c14278ec0e2c604f9307a5323815b_1200x500.jpg',

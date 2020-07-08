@@ -10,10 +10,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 ///搜索
 class SearchPage extends StatefulWidget {
   @override
-  createState() => SearchPageState();
+  createState() => _SearchPageState();
 }
 
-class SearchPageState extends State<SearchPage> {
+class _SearchPageState extends State<SearchPage> {
   final _controller = TextEditingController();
   int currentCount = 0;
   Color _color = Color(0xffff0000);

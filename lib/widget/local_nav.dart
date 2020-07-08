@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutterapp1/model/common_model.dart';
 import 'package:flutterapp1/utils/jump_util.dart';
 
-//轮播图下的5个icon
+///轮播图下的5个icon
 class LocalNav extends StatelessWidget {
   final List<CommonModel> localNavList;
 

@@ -6,10 +6,10 @@ import 'package:provider/provider.dart';
 ///天气
 class TravelPage extends StatefulWidget {
   @override
-  createState() => TravelPageState();
+  createState() => _TravelPageState();
 }
 
-class TravelPageState extends State<TravelPage> {
+class _TravelPageState extends State<TravelPage> {
   WeatherModel weatherModel = WeatherModel();
 
   @override

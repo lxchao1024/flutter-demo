@@ -7,10 +7,10 @@ import 'package:flutterapp1/widget/my/suffix_view.dart';
 
 class MyPage extends StatefulWidget {
   @override
-  createState() => MyPageState();
+  createState() => _MyPageState();
 }
 
-class MyPageState extends State<MyPage> {
+class _MyPageState extends State<MyPage> {
 
   @override
   Widget build(BuildContext context) {
