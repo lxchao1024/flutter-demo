@@ -61,10 +61,12 @@ class _SearchPageState extends State<SearchPage> {
       });
       return;
     }
-    SearchDao().fetch(URL + value).then((SearchModel value) {
-      setState(() {
-        searchModel = value;
-      });
+    SearchDao().fetch(URL + value, value).then((SearchModel value) {
+      if (value.keyWord == keyWord) {
+        setState(() {
+          searchModel = value;
+        });
+      }
     }).catchError((e) {
       print(e);
     });
@@ -72,10 +74,12 @@ class _SearchPageState extends State<SearchPage> {
 
   void _getSearchContent() {
     if (keyWord.length == 0) return;
-    SearchDao().fetch(URL + _controller.text.toString()).then((value) => {
-      setState(() {
-        searchModel = value;
-      })
+    SearchDao().fetch(URL + keyWord, keyWord).then((SearchModel value) {
+      if (value.keyWord == keyWord) {
+        setState(() {
+          searchModel = value;
+        });
+      }
     });
   }
 

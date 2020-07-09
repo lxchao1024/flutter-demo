@@ -1,6 +1,7 @@
 ///搜索结果实体类
 class SearchModel {
   final List<SearchItem> data;
+  String keyWord;
 
   SearchModel({this.data});
 
