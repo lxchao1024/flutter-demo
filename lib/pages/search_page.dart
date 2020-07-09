@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp1/dao/search_dao.dart';
+import 'package:flutterapp1/model/common_model.dart';
 import 'package:flutterapp1/model/search_model.dart';
+import 'package:flutterapp1/utils/jump_util.dart';
 import 'package:flutterapp1/widget/search_bar.dart';
 
 const SEARCH_BAR_DEFAULT_TEXT = '目的地 | 酒店 | 景点 | 航班号';
@@ -79,6 +81,7 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget _rowItem(BuildContext context, int position) {
     return GestureDetector(
+      onTap: () => JumpUtil.jumpWebView(context, CommonModel(title: '详情', url: searchModel?.data[position]?.url ?? '')),
         child: Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
