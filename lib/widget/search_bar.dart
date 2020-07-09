@@ -10,6 +10,7 @@ class SearchBar extends StatefulWidget {
   final SearchBarType searchBarType;
   final String hint;
   final String defaultText;
+  final TextStyle rightTextStyle;
   final void Function() leftButtonClick;
   final void Function() rightButtonClick;
   final void Function() speakClick;
@@ -23,6 +24,7 @@ class SearchBar extends StatefulWidget {
       this.searchBarType = SearchBarType.normal,
       this.hint,
       this.defaultText,
+      this.rightTextStyle,
       this.leftButtonClick,
       this.rightButtonClick,
       this.speakClick,
@@ -66,7 +68,7 @@ class _SearchBarState extends State<SearchBar> {
                     ? null
                     : Icon(
                         Icons.arrow_back_ios,
-                        color: Colors.grey,
+                        color: Colors.white,
                         size: 22,
                       ),
               ),
@@ -80,7 +82,7 @@ class _SearchBarState extends State<SearchBar> {
                 padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                 child: Text(
                   '搜索',
-                  style: TextStyle(color: Colors.blue, fontSize: 15),
+                  style: widget.rightTextStyle != null ? widget.rightTextStyle : TextStyle(color: Colors.blue, fontSize: 15),
                 ),
               ),
               widget.rightButtonClick)
@@ -136,7 +138,7 @@ class _SearchBarState extends State<SearchBar> {
       inputBoxColor = Color(int.parse('0xffEDEDED'));
     }
     return Container(
-      height: 30,
+      height: 32,
       margin: EdgeInsets.only(left: 10),
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       decoration: BoxDecoration(
@@ -160,18 +162,18 @@ class _SearchBarState extends State<SearchBar> {
                     maxLines: 1,
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 13.0,
+                        fontSize: 12.0,
                         fontWeight: FontWeight.w300),
                     decoration: InputDecoration(
-//                      contentPadding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                         border: InputBorder.none,
                         hintText: widget.hint ?? '',
-                        hintStyle: TextStyle(fontSize: 13)))
+                        hintStyle: TextStyle(fontSize: 12)))
                 : _wrapTap(
                     Container(
+                      alignment: Alignment.centerLeft,
                       child: Text(
                         widget.defaultText,
-                        style: TextStyle(color: Colors.grey, fontSize: 13),
+                        style: TextStyle(color: Colors.grey, fontSize: 12),
                       ),
                     ),
                     widget.inputBoxClick),

@@ -5,6 +5,7 @@ import 'package:flutterapp1/dao/home_dao.dart';
 import 'package:flutterapp1/model/common_model.dart';
 import 'package:flutterapp1/model/grid_nav_model.dart';
 import 'package:flutterapp1/model/sales_box_model.dart';
+import 'package:flutterapp1/pages/search_page.dart';
 import 'package:flutterapp1/widget/grid_nav.dart';
 import 'package:flutterapp1/widget/local_nav.dart';
 import 'package:flutterapp1/widget/sales_box.dart';
@@ -157,9 +158,9 @@ class _HomePageState extends State<HomePage>
             child: SearchBar(
               searchBarType: appBarAlpha > 0.2 ? SearchBarType.homeLight : SearchBarType.home,
               defaultText: SEARCH_BAR_DEFAULT_TEXT,
-              inputBoxClick: (){},
-              speakClick: (){},
-              leftButtonClick: (){},
+              inputBoxClick: _jumpToSearch,
+              speakClick: _jumpToSearch,
+              leftButtonClick: _jumpToSearch,
             ),
           ),
         ),
@@ -171,6 +172,12 @@ class _HomePageState extends State<HomePage>
         )
       ],
     );
+  }
+
+  _jumpToSearch() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return SearchPage(showLeft: true);
+    }));
   }
 
   @override
